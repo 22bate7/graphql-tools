@@ -331,11 +331,6 @@ function addResolveFunctionsToSchema(
       }
 
       if (type instanceof GraphQLEnumType) {
-        if (!type.isValidValue(fieldName)) {
-          throw new SchemaError(
-            `${typeName}.${fieldName} was defined in resolvers, but enum is not in schema`
-          );
-        }
         type.getValue(fieldName)['value'] = resolveFunctions[typeName][fieldName];
       }
 
